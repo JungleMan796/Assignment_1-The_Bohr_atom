@@ -25,5 +25,19 @@ int main()
     // Compute transition energy using Bohr formula.
     double E = R * Z * Z * ((1 / (n_j * n_j)) - (1 / (n_i * n_i))); // Transition energy in eV.
 
+    // Convert to Joules if required and print result.
+    // Look into asking for precision, need joules in standard form most likely.
+    if (units == 1)
+    {
+        E = E * 1.602e-19; // Convert eV to Joules, term is from UoM physical constants sheet.
+        std::cout << std::fixed << std::setprecision(20);
+        std::cout << "Transition energy: " << E << " J" << std::endl;
+    }
+    else
+    {
+        std::cout << std::fixed << std::setprecision(6);
+        std::cout << "Transition energy: " << E << " eV" << std::endl;
+    }
+    
 
 }
