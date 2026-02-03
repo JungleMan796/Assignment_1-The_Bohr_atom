@@ -10,7 +10,7 @@ int main()
     // Define constants.
     const double R = 13.6; // Rydberg constant in eV.
     
-    // Requesting variables from user.
+    // Requesting variables from user. Will need to implement checks for invalid inputs later.
     int units, Z, n_i, n_j; // Units calculation is printed in, atomic number, initial and final principal quantum numbers.
 
     std::cout << "Enter atomic number Z: ";
@@ -22,4 +22,6 @@ int main()
     std::cout << "Enter units (0 for eV, 1 for Joules): ";
     std::cin >> units;
     
+
+
 }
