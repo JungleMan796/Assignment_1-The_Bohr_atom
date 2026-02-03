@@ -8,10 +8,12 @@
 int main()
 {
     // Declare variables.
-    int Z; // Atomic Number.
-    //int n_i; // Initial principal quantum number.
-    //int n_j; // Final principal quantum number.
+    int Z, n_i, n_j; // Atomic Number, initial and final principal quantum numbers.
 
     std::cout << "Enter atomic number Z: ";
     std::cin >> Z;
+    std::cout << "Enter initial quantum number n_i: ";
+    std::cin >> n_i;
+    std::cout << "Enter final quantum number n_j: ";
+    std::cin >> n_j;
 }
