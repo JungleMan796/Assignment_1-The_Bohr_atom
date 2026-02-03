@@ -22,6 +22,8 @@ int main()
     std::cout << "Enter units (0 for eV, 1 for Joules): ";
     std::cin >> units;
     
+    // Compute transition energy using Bohr formula.
+    double E = R * Z * Z * ((1 / (n_j * n_j)) - (1 / (n_i * n_i))); // Transition energy in eV.
 
 
 }
