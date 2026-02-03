@@ -19,7 +19,14 @@ int main()
         int units, Z, n_i, n_j; // Units calculation is printed in, atomic number, initial and final principal quantum numbers.
 
         std::cout << "Enter atomic number Z: ";
-        std::cin >> Z;
+        while (!(std::cin >> Z) || Z < 1 || Z > 118)
+        {
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Invalid input. Enter an integer between and including 1 and 118: ";
+        }
+
+
         std::cout << "Enter initial quantum number n_i: ";
         std::cin >> n_i;
         std::cout << "Enter final quantum number n_j: ";
