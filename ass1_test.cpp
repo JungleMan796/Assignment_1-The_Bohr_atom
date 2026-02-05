@@ -60,12 +60,13 @@ int main()
         if (units == 1)
         {
             E = E * eV_to_J; // Convert eV to Joules, term is from UoM physical constants sheet.
-            std::cout << std::fixed << std::setprecision(20);
-            std::cout << "Transition energy: " << E << " J" << std::endl;
+            //std::cout << std::fixed << std::setprecision(20);
+            //std::cout << "Transition energy: " << E << " J" << std::endl;
+            std::cout << std::scientific << std::setprecision(3) << "Transition energy: " << E << " J" << std::endl; // Print in scientific notation as well, as per assignment specification.
         }
         else
         {
-            std::cout << std::fixed << std::setprecision(6);
+            std::cout << std::fixed << std::setprecision(3);
             std::cout << "Transition energy: " << E << " eV" << std::endl;
         }
         // Ask user if they want to repeat the calculation.
