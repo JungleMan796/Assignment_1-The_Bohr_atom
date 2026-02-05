@@ -11,3 +11,7 @@ Then the decision to remain or leave the calulation loop was implemented.
 The testing of and recovery for all user inputted variables was developed.
 
 Output of transition energy in Joules was later changed to standard form.
+
+Declaration of AI: (ChatGPT 5.2 & Claude Haiku 4.5)
+  - It helped me learn the basics of C++, for example how to output (```std::cout <<```)
+  - It helped me understand the compiler configuration. I originally had strawberry pearl installed which was causing issues.
