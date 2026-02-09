@@ -13,23 +13,23 @@ double return_transition_energy(int Z, int n_i, int n_j)
     return R * Z * Z * ((1.0 / (n_j * n_j)) - (1.0 / (n_i * n_i))); // Transition energy in eV.
 }
 
-std::string hydrogen_spectral_series(int n_j)
+std::string hydrogen_spectral_series(int Z, int n_j)
 {
     // Function to return the name of the spectral series for a given final principal quantum number n_j.
     switch (n_j)
     {
         case 1:
-            return "Lyman series.";
+            return "The Hydrogen spectral series is the Lyman series.";
         case 2:
-            return "Balmer series.";
+            return "The Hydrogen spectral series is the Balmer series.";
         case 3:
-            return "Paschen series.";
+            return "The Hydrogen spectral series is the Paschen series.";
         case 4:
-            return "Brackett series.";
+            return "The Hydrogen spectral series is the Brackett series.";
         case 5:
-            return "Pfund series.";
+            return "The Hydrogen spectral series is the Pfund series.";
         default:
-            return "Higher order series, n_j > 5."; // For n_j greater than 5, as there are no named series beyond Pfund.
+            return "This is a higher order hydrogen spectral series, n_j > 5."; // For n_j greater than 5, as there are no named series beyond Pfund.
     }
 }
 
@@ -96,6 +96,11 @@ int main()
         {
             std::cout << std::fixed << std::setprecision(3);
             std::cout << "Transition energy: " << E << " eV" << std::endl;
+        }
+        // Print the name of the spectral series for a hydrogenic atom, if Z = 1.
+        if (Z == 1)
+        {
+            std::cout << hydrogen_spectral_series(Z, n_j) << std::endl;
         }
         // Ask user if they want to repeat the calculation.
         std::cout << "Do you want to perform another calculation? (0 for no, 1 for yes): ";
