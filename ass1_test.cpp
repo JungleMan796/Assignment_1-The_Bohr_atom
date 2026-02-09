@@ -1,6 +1,6 @@
 // Test document for Assignment 1, calculating transition energy using Bohr formula.
 // Callum Williamson - 11399397.
-// 03/02/2026.
+// 09/02/2026.
 
 #include<iostream>
 #include<iomanip>
@@ -31,6 +31,27 @@ std::string hydrogen_spectral_series(int Z, int n_j)
         default:
             return "This is a higher order hydrogen spectral series, n_j > 5."; // For n_j greater than 5, as there are no named series beyond Pfund.
     }
+}
+
+void wavelength(double E)
+{
+    // Function to return the wavelength of the transition in nm, given the transition energy in eV.
+    const double h = 4.136e-15; // Planck's constant in eVs.
+    const double c = 3e8; // Speed of light in m/s.
+    double lambda = (h * c) / E; // Wavelength in meters.
+    lambda = lambda * 1e9; // Convert wavelength to nm.
+
+    // Print the type of light emitted based on the wavelength.
+    std::string band;
+    if (lambda < 0.01 ) band = "Gamma ray";
+    else if (lambda < 10) band = "X-ray";
+    else if (lambda < 400) band = "Ultraviolet";
+    else if (lambda < 700) band = "Visible light";
+    else if (lambda < 1e6) band = "Infrared";
+    else if (lambda < 1e9) band = "Microwave";
+    else band = "Radio wave";
+
+    std::cout << "Wavelength: " << lambda << " nm (" << band << ")" << std::endl;
 }
 
 int main()
