@@ -53,7 +53,7 @@ int main()
         }
         
         // Compute transition energy using Bohr formula.
-        double E = R * Z * Z * ((1 / (n_j * n_j)) - (1 / (n_i * n_i))); // Transition energy in eV.
+        double E = R * Z * Z * ((1.0 / (n_j * n_j)) - (1.0 / (n_i * n_i))); // Transition energy in eV.
 
         // Convert to Joules if required and print result.
         if (units == 1)
