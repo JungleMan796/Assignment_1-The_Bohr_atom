@@ -118,11 +118,16 @@ int main()
             std::cout << std::fixed << std::setprecision(3);
             std::cout << "Transition energy: " << E << " eV" << std::endl;
         }
+
         // Print the name of the spectral series for a hydrogenic atom, if Z = 1.
         if (Z == 1)
         {
             std::cout << hydrogen_spectral_series(Z, n_j) << std::endl;
         }
+
+        // Print the wavelength of the transition and the type of light emitted.
+        wavelength(E);
+
         // Ask user if they want to repeat the calculation.
         std::cout << "Do you want to perform another calculation? (0 for no, 1 for yes): ";
         while (!(std::cin >> repeat) || (repeat != 0 && repeat != 1)) // Input validation for repeat choice.
