@@ -12,7 +12,7 @@ int main()
     const double eV_to_J = 1.602e-19; // Conversion factor from eV to Joules.
 
     // Define character for repetition of program.
-    char repeat = 'y';
+    int repeat = 1;
     do
     {
         // Requesting variables from user. Will need to implement checks for invalid inputs later.
@@ -69,13 +69,13 @@ int main()
             std::cout << "Transition energy: " << E << " eV" << std::endl;
         }
         // Ask user if they want to repeat the calculation.
-        std::cout << "Do you want to perform another calculation? (y/n): ";
-        while (!(std::cin >> repeat) || (repeat != 'y' && repeat != 'n')) // Input validation for repeat choice.
+        std::cout << "Do you want to perform another calculation? (0 for no, 1 for yes): ";
+        while (!(std::cin >> repeat) || (repeat != 0 && repeat != 1)) // Input validation for repeat choice.
         {
             std::cin.clear();
             std::cin.ignore(10000, '\n');
-            std::cout << "Invalid input. Enter 'y' to perform another calculation or 'n' to exit: ";
+            std::cout << "Invalid input. Enter 0 to exit or 1 to perform another calculation: ";
         }
-    } while (repeat == 'y');
+    } while (repeat == 1);
     
 }
