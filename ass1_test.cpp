@@ -1,6 +1,6 @@
 // Test document for Assignment 1, calculating transition energy using Bohr formula.
 // Callum Williamson - 11399397.
-//03/02/2026.
+// 03/02/2026.
 
 #include<iostream>
 #include<iomanip>
@@ -56,7 +56,6 @@ int main()
         double E = R * Z * Z * ((1 / (n_j * n_j)) - (1 / (n_i * n_i))); // Transition energy in eV.
 
         // Convert to Joules if required and print result.
-        // Look into asking for precision, need joules in standard form most likely.
         if (units == 1)
         {
             E = E * eV_to_J; // Convert eV to Joules, term is from UoM physical constants sheet.
