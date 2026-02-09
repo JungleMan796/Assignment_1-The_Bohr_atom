@@ -35,13 +35,15 @@ std::string hydrogen_spectral_series(int Z, int n_j)
 
 void wavelength(double E)
 {
-    // Function to return the wavelength of the transition in nm, given the transition energy in eV.
+    // Function to return the wavelength of the transition in nm and the type of light emitted based on the wavelength.
+
+    // Calculation of wavelength.
     const double h = 4.136e-15; // Planck's constant in eVs.
     const double c = 3e8; // Speed of light in m/s.
     double lambda = (h * c) / E; // Wavelength in meters.
     lambda = lambda * 1e9; // Convert wavelength to nm.
 
-    // Print the type of light emitted based on the wavelength.
+    // Determine the type of light.
     std::string band;
     if (lambda < 0.01 ) band = "Gamma ray";
     else if (lambda < 10) band = "X-ray";
@@ -136,6 +138,9 @@ int main()
             std::cin.ignore(10000, '\n');
             std::cout << "Invalid input. Enter 0 to exit or 1 to perform another calculation: ";
         }
+        
+        // Print a separator for readability if the user chooses to repeat.
+        std::cout << "---------------------------------------------------------------------\n";
     } while (repeat == 1);
-    
+    std::cout << "Program exited. Thank you.";
 }
