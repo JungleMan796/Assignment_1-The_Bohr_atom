@@ -4,12 +4,33 @@
 
 #include<iostream>
 #include<iomanip>
+#include<string>
 
 double return_transition_energy(int Z, int n_i, int n_j)
 {
     // Function to return transistion energy in eV.
     const double R = 13.6; // Rydberg constant in eV.
     return R * Z * Z * ((1.0 / (n_j * n_j)) - (1.0 / (n_i * n_i))); // Transition energy in eV.
+}
+
+std::string hydrogen_spectral_series(int n_j)
+{
+    // Function to return the name of the spectral series for a given final principal quantum number n_j.
+    switch (n_j)
+    {
+        case 1:
+            return "Lyman series.";
+        case 2:
+            return "Balmer series.";
+        case 3:
+            return "Paschen series.";
+        case 4:
+            return "Brackett series.";
+        case 5:
+            return "Pfund series.";
+        default:
+            return "Higher order series, n_j > 5."; // For n_j greater than 5, as there are no named series beyond Pfund.
+    }
 }
 
 int main()
