@@ -5,6 +5,13 @@
 #include<iostream>
 #include<iomanip>
 
+double return_transition_energy(int Z, int n_i, int n_j)
+{
+    // Function to return transistion energy in eV.
+    const double R = 13.6; // Rydberg constant in eV.
+    return R * Z * Z * ((1.0 / (n_j * n_j)) - (1.0 / (n_i * n_i))); // Transition energy in eV.
+}
+
 int main()
 {
     // Define constants.
