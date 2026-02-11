@@ -103,8 +103,7 @@ int main()
             std::cout << "Invalid input for units. Enter 0 for eV or 1 for Joules: ";
         }
         
-        // Compute transition energy using Bohr formula.
-        //double E = R * Z * Z * ((1.0 / (n_j * n_j)) - (1.0 / (n_i * n_i))); // Transition energy in eV.
+        // Compute transition energy.
         double E = return_transition_energy(Z, n_i, n_j); // Transition energy in eV, using function defined above.
 
         // Convert to Joules if required and print result.
@@ -114,6 +113,7 @@ int main()
             //std::cout << std::fixed << std::setprecision(20);
             //std::cout << "Transition energy: " << E << " J" << std::endl;
             std::cout << std::scientific << std::setprecision(3) << "Transition energy: " << E_J << " J" << std::endl; // Print in scientific notation as well, as per assignment specification.
+            std::cout << std::fixed << std::setprecision(3); // Resetting formatting to the same as if eV was chosen, for consistency in later outputs.
         }
         else
         {
