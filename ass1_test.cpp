@@ -78,11 +78,11 @@ int main()
         }
 
         std::cout << "Enter initial principal quantum number n_i: ";
-        while (!(std::cin >> n_i) || n_i < 1) // Input validation for initial principal quantum number (I beleive there is no upper limit?).
+        while (!(std::cin >> n_i) || n_i < 2) // Input validation for initial principal quantum number (I beleive there is no upper limit?).
         {
             std::cin.clear();
             std::cin.ignore(10000, '\n');   
-            std::cout << "Invalid input for initial principal quantum number n_i. Enter a positive integer, greater than or equal to 1: ";
+            std::cout << "Invalid input for initial principal quantum number n_i. Enter a positive integer, greater than 1: ";
         }
 
         std::cout << "Enter final principal quantum number n_j: ";
