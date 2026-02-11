@@ -33,14 +33,14 @@ std::string hydrogen_spectral_series(int Z, int n_j)
     }
 }
 
-void wavelength(double E)
+void wavelength(double energy)
 {
     // Function to return the wavelength of the transition in nm and the type of light emitted based on the wavelength.
 
     // Calculation of wavelength.
     const double h = 4.136e-15; // Planck's constant in eVs.
     const double c = 3e8; // Speed of light in m/s.
-    double lambda = (h * c) / E; // Wavelength in meters.
+    double lambda = (h * c) / energy; // Wavelength in meters.
     lambda = lambda * 1e9; // Convert wavelength to nm.
 
     // Determine the type of light.
@@ -110,10 +110,10 @@ int main()
         // Convert to Joules if required and print result.
         if (units == 1)
         {
-            E = E * eV_to_J; // Convert eV to Joules, term is from UoM physical constants sheet.
+            double E_J = E * eV_to_J; // Convert eV to Joules, term is from UoM physical constants sheet.
             //std::cout << std::fixed << std::setprecision(20);
             //std::cout << "Transition energy: " << E << " J" << std::endl;
-            std::cout << std::scientific << std::setprecision(3) << "Transition energy: " << E << " J" << std::endl; // Print in scientific notation as well, as per assignment specification.
+            std::cout << std::scientific << std::setprecision(3) << "Transition energy: " << E_J << " J" << std::endl; // Print in scientific notation as well, as per assignment specification.
         }
         else
         {
