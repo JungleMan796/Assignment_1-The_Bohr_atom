@@ -86,7 +86,7 @@ int main()
         }
 
         std::cout << "Enter final principal quantum number n_j: ";
-        while (!(std::cin >> n_j) || n_j < 1 || n_j > n_i) // Input validation for final principal quantum number.
+        while (!(std::cin >> n_j) || n_j < 1 || n_j >= n_i) // Input validation for final principal quantum number.
         {
             std::cin.clear();
             std::cin.ignore(10000, '\n');
