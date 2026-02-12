@@ -62,19 +62,35 @@ int main()
     const double R = 13.6; // Rydberg constant in eV.
     const double eV_to_J = 1.602e-19; // Conversion factor from eV to Joules.
 
-    // Define character for repetition of program.
+    // Define int for repetition of program.
     int repeat = 1;
     do
     {
-        // Requesting variables from user. Will need to implement checks for invalid inputs later.
+        // Requesting variables from user.
         int units, Z, n_i, n_j; // Units calculation is printed in, atomic number, initial and final principal quantum numbers.
 
         std::cout << "Enter atomic number Z: ";
-        while (!(std::cin >> Z) || Z < 1 || Z > 118) // Input validation for atomic number.
+        bool valid_Z = 0; // Define bool for validility of Z.
+        while (!valid_Z) // Input validation for atomic number.
         {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cout << "Invalid input for atomic number Z. Enter an integer between and including 1 and 118: ";
+            bool input_okay = !(!(std::cin >> Z));
+            bool Z_okay = !(Z < 1 || Z > 118);
+            // Below checks that there are no extra characters after the integer input for Z, which would indicate an invalid input. This is done by peeking at the next character in the input stream and checking if it is a newline (10) or end of file (EOF).
+            bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
+            valid_Z = input_okay && Z_okay && cin_okay;
+
+
+            if (!valid_Z)
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Invalid input for atomic number Z. Enter an integer between and including 1 and 118: ";
+            }
+            else
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+            }
         }
 
         std::cout << "Enter initial principal quantum number n_i: ";
