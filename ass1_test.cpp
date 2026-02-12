@@ -75,7 +75,7 @@ int main()
         {
             bool input_okay = !(!(std::cin >> Z));
             bool Z_okay = !(Z < 1 || Z > 118);
-            // Below checks that there are no extra characters after the integer input for Z, which would indicate an invalid input. This is done by peeking at the next character in the input stream and checking if it is a newline (10) or end of file (EOF).
+            // Below checks that there are no extra characters after the integer input for Z, which would indicate an invalid input.
             bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
             valid_Z = input_okay && Z_okay && cin_okay;
 
@@ -94,11 +94,27 @@ int main()
         }
 
         std::cout << "Enter initial principal quantum number n_i: ";
-        while (!(std::cin >> n_i) || n_i < 2) // Input validation for initial principal quantum number (I beleive there is no upper limit?).
+        bool valid_n_i = 0; // Define bool for validity of n_i.
+        while (!valid_n_i) // Input validation for n_i.
         {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');   
-            std::cout << "Invalid input for initial principal quantum number n_i. Enter a positive integer, greater than 1: ";
+            bool input_okay = !(!(std::cin >> n_i));
+            bool n_i_okay = !(n_i < 2); // Initial principal quantum number must be greater than or equal to 2 for a transition to occur, as n_j must be less than n_i.
+            // Below checks that there are no extra characters after the integer input for n_i, which would indicate an invalid input.
+            bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
+            valid_n_i = input_okay && n_i_okay && cin_okay;
+
+
+            if (!valid_n_i)
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Invalid input for initial principal quantum number n_i. Enter a positive integer, greater than 1: ";
+            }
+            else
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+            }
         }
 
         std::cout << "Enter final principal quantum number n_j: ";
