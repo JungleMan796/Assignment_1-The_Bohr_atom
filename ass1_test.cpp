@@ -118,13 +118,27 @@ int main()
         }
 
         std::cout << "Enter final principal quantum number n_j: ";
-        while (!(std::cin >> n_j) || n_j < 1 || n_j >= n_i) // Input validation for final principal quantum number.
+        bool valid_n_j = 0; // Define bool for validity of n_j.
+        while (!valid_n_j) // Input validation for n_i.
         {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            // Perhaps should specify that n_j must be less than n_i for a transition to occur first.
-            // Also is the below sentance too long?
-            std::cout << "Invalid input for final principal quantum number n_j. Enter a positive integer, greater than or equal to 1 and that is less than n_i: ";
+            bool input_okay = !(!(std::cin >> n_j));
+            bool n_j_okay = !(n_j < 1 || n_j >= n_i); // Final principal quantum number must be greater than or equal to 1 and less than n_i for a transition to occur.
+             // Below checks that there are no extra characters after the integer input for n_j, which would indicate an invalid input.
+            bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
+            valid_n_j = input_okay && n_j_okay && cin_okay;
+
+
+            if (!valid_n_j)
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Invalid input for final principal quantum number n_j. Enter a positive integer, greater than or equal to 1 and less than n_i: ";
+            }
+            else
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+            }
         }
 
         std::cout << "Enter units (0 for eV, 1 for Joules): ";
