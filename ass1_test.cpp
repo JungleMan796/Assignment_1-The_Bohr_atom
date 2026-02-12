@@ -79,7 +79,6 @@ int main()
             bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
             valid_Z = input_okay && Z_okay && cin_okay;
 
-
             if (!valid_Z)
             {
                 std::cin.clear();
@@ -98,11 +97,11 @@ int main()
         while (!valid_n_i) // Input validation for n_i.
         {
             bool input_okay = !(!(std::cin >> n_i));
+
             bool n_i_okay = !(n_i < 2); // Initial principal quantum number must be greater than or equal to 2 for a transition to occur, as n_j must be less than n_i.
             // Below checks that there are no extra characters after the integer input for n_i, which would indicate an invalid input.
             bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
             valid_n_i = input_okay && n_i_okay && cin_okay;
-
 
             if (!valid_n_i)
             {
@@ -127,7 +126,6 @@ int main()
             bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
             valid_n_j = input_okay && n_j_okay && cin_okay;
 
-
             if (!valid_n_j)
             {
                 std::cin.clear();
@@ -142,11 +140,26 @@ int main()
         }
 
         std::cout << "Enter units (0 for eV, 1 for Joules): ";
-        while (!(std::cin >> units) || (units != 0 && units != 1)) // Input validation for units choice.
+        bool valid_units = 0; // Define bool for validity of units choice.
+        while (!valid_units) // Input validation for units choice.
         {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cout << "Invalid input for units. Enter 0 for eV or 1 for Joules: ";
+            bool input_okay = !(!(std::cin >> units));
+            bool units_okay = (units == 0 || units == 1);
+            // Below checks that there are no extra characters after the integer input for units, which would indicate an invalid input.
+            bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
+            valid_units = input_okay && units_okay && cin_okay;
+            
+            if (!valid_units)
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Invalid input for units. Enter 0 for eV or 1 for Joules: ";
+            }
+            else
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+            }
         }
         
         // Compute transition energy.
