@@ -191,14 +191,29 @@ int main()
 
         // Ask user if they want to repeat the calculation.
         std::cout << "Do you want to perform another calculation? (0 for no, 1 for yes): ";
-        while (!(std::cin >> repeat) || (repeat != 0 && repeat != 1)) // Input validation for repeat choice.
+        bool valid_repeat = 0; // Define bool for validity of repeat choice.
+        while (!valid_repeat) // Input validation for repeat choice.
         {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cout << "Invalid input. Enter 0 to exit or 1 to perform another calculation: ";
+            bool input_okay = !(!(std::cin >> repeat));
+            bool repeat_okay = (repeat == 0 || repeat == 1);
+            // Below checks that there are no extra characters after the integer input for Z, which would indicate an invalid input.
+            bool cin_okay = std::cin.peek() == 10 || std::cin.peek() == EOF; // Check if the next character is a newline (10) or end of file (EOF), which would indicate that there are no extra characters after the integer input.
+            valid_repeat = input_okay && repeat_okay && cin_okay;
+
+            if (!valid_repeat)
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Invalid input. Enter 0 to exit or 1 to perform another calculation: ";
+            }
+            else
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+            }
         }
         
-        // Print a separator for readability if the user chooses to repeat.
+        // Print a separator for readability.
         std::cout << "---------------------------------------------------------------------\n";
     } while (repeat == 1);
     std::cout << "Program exited. Thank you.";
